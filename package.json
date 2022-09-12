@@ -1,0 +1,68 @@
+{
+  "name": "image_processing_api",
+  "version": "0.1.0",
+  "description": "Project for udacity, serve images and modify them according to parameters.",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "NODE_ENV='production' node build/index.ts",
+    "build": "tsc",
+    "build:watch": "tsc -w",
+    "dev": "NODE_ENV='development' ts-node-dev --respawn ./src/index.ts",
+    "debug": "ts-node-dev --transpile-only --respawn --inspect=9229 src/index.ts",
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
+    "format": "prettier --write 'src/**/*.ts'",
+    "test": "NODE_ENV='test' npm run build && jasmine",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MinaSameh1/image_processing_api.git"
+  },
+  "keywords": [
+    "Sharp",
+    "typescript",
+    "node",
+    "express",
+    "image"
+  ],
+  "author": "Mina Sameh Wadie",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/MinaSameh1/image_processing_api/issues"
+  },
+  "homepage": "https://github.com/MinaSameh1/image_processing_api#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/express-pino-logger": "^4.0.3",
+    "@types/jasmine": "^4.3.0",
+    "@types/node": "^18.7.16",
+    "@types/supertest": "^2.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.0",
+    "jasmine": "^4.4.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "supertest": "^6.2.4",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-pino-logger": "^7.0.0",
+    "helmet": "^6.0.0",
+    "pino": "^8.5.0",
+    "pino-pretty": "^9.1.0",
+    "sharp": "^0.31.0"
+  }
+}
