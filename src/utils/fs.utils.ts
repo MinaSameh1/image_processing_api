@@ -6,7 +6,7 @@ import path from 'path'
  * @param {string} fileName - The name of the file we want to get the absolute path to.
  * @returns {string} Absolute filepath
  */
-export function getAbsolutePath(fileName: string): string {
+export function getImageAbsolutePath(fileName: string): string {
   return path.join(path.resolve('./'), `/pictures/${fileName}`)
 }
 

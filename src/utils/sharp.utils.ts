@@ -17,14 +17,18 @@ export interface resizeInput {
  *  newLocation?: string - The new location, if not passed then it replaces the old image
  * }
  */
-export function resizeImage({
+export async function resizeImage({
   imageLocation,
   width,
   height,
   newLocation
 }: resizeInput) {
+  const imageMeta = await sharp(imageLocation).metadata()
   return sharp(imageLocation)
-    .resize(width, height)
+    .resize(
+      width === 0 ? imageMeta.width : width,
+      height === 0 ? imageMeta.height : height
+    )
     .toFile(newLocation ?? imageLocation)
 }
 
