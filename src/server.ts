@@ -5,7 +5,7 @@ import pinoExpress from 'express-pino-logger'
 import cors from 'cors'
 import { logger } from './utils'
 
-import { serverRouter } from './router'
+import { serverRouter, imageRouter } from './router'
 
 const app = express()
 
@@ -15,7 +15,7 @@ app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }))
 
-app.use(helmet()) // Security
+app.use(helmet()) // Securityapi
 
 app.use(cors())
 
@@ -23,6 +23,7 @@ app.use(pinoExpress({ logger }))
 
 //Routes
 app.use(serverRouter) // /api/checkhealth
+app.use(imageRouter)
 
 // Error handling, from express official docs: https://expressjs.com/en/guide/error-handling.html
 app.use(
@@ -31,7 +32,7 @@ app.use(
     req: express.Request,
     res: express.Response,
     // eslint-disable-next-line no-unused-vars
-    next: express.NextFunction
+    _next: express.NextFunction
   ) => {
     req.log.error({
       errorName: err.name,
