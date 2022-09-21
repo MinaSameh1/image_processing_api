@@ -24,11 +24,20 @@ To run tests (Jasmine)
 npm run test
 ```
 
+To use the api, simply provide the image name (Image must be in `pictures` folder) in the filename query, Ex:
+
+```
+http://localhost:8000/api/img?filename=fjord.jpg&w=500&h=200
+```
+
+You can omit the h/w, but filename must be provided.
+
 ## API Endpoints
 
-| Endpoint         | method | brief description                    |
-| ---------------- | ------ | ------------------------------------ |
-| /api/healthcheck | get    | Checks if api is working returns 200 |
+| Endpoint         | method | brief description                                                                          |
+| ---------------- | ------ | ------------------------------------------------------------------------------------------ |
+| /api/healthcheck | get    | Checks if api is working returns 200                                                       |
+| /api/img         | get    | Requires `filename` query, supports `h` and `w` for height and width respectfully in query |
 
 ### Responses:
 
@@ -37,3 +46,5 @@ npm run test
 | Status code | description |
 | ----------- | ----------- |
 | 200         | Success     |
+| 400         | bad Request |
+| 404         | not found   |
