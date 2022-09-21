@@ -1,7 +1,7 @@
 import request from 'supertest'
 import app from '../server'
 
-describe('server should work', () => {
+describe('Server checkhealth endpoint', () => {
   beforeAll(() => {
     process.env.LOG_LEVEL = 'silent' // Turn off pino
   })
