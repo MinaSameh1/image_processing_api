@@ -36,18 +36,25 @@ export async function ImageController(
       if (checkIfFileExists(imgLoc)) {
         req.log.debug(`Recieved: ${name} and ${JSON.stringify(req.query)}`)
         // Correct queries? or wrong request?
-        if (req.query.h || req.query.w) {
+        if (req.query.height || req.query.width) {
+          // If they are not numbers warn user, to make things easier split them..
+          if (req.query.height && isNaN(Number(req.query.height))) {
+            return res.status(400).json({ message: 'Wrong input to height!' })
+          }
+          if (req.query.width && isNaN(Number(req.query.width))) {
+            return res.status(400).json({ message: 'Wrong input to width!' })
+          }
           const { height, width } = await getImageMetaData(imgLoc)
-          const imgNameMod = `${name.split('.')[0]}-${req.query.w ?? width}-${
-            req.query.h ?? height
-          }${extName}`
+          const imgNameMod = `${name.split('.')[0]}-${
+            req.query.width ?? width
+          }-${req.query.height ?? height}${extName}`
           const imgModLoc = getImageAbsolutePath(`/modified/${imgNameMod}`)
           if (!checkIfFileExists(imgModLoc))
             // If the img doesn't exist create it.
             await resizeImage({
               imageLocation: imgLoc,
-              width: Number(req.query.w ?? 0),
-              height: Number(req.query.h ?? 0),
+              width: Number(req.query.width ?? 0),
+              height: Number(req.query.height ?? 0),
               newLocation: imgModLoc
             })
           // There is no need for else, because one of two things will happen,
