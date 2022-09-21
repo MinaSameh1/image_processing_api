@@ -1,6 +1,11 @@
 import { NextFunction, Request, Response } from 'express'
 import path from 'path'
-import { checkIfFileExists, getImageAbsolutePath, resizeImage } from '../utils'
+import {
+  checkIfFileExists,
+  getImageAbsolutePath,
+  getImageMetaData,
+  resizeImage
+} from '../utils'
 
 /**
  * @description Controller for image, responsible for the image endpoint.
@@ -32,8 +37,9 @@ export async function ImageController(
         req.log.debug(`Recieved: ${name} and ${JSON.stringify(req.query)}`)
         // Correct queries? or wrong request?
         if (req.query.h || req.query.w) {
-          const imgNameMod = `${name.split('.')[0]}-${req.query.w}-${
-            req.query.h
+          const { height, width } = await getImageMetaData(imgLoc)
+          const imgNameMod = `${name.split('.')[0]}-${req.query.w ?? width}-${
+            req.query.h ?? height
           }${extName}`
           const imgModLoc = getImageAbsolutePath(`/modified/${imgNameMod}`)
           if (!checkIfFileExists(imgModLoc))

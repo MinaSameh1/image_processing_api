@@ -23,7 +23,7 @@ export async function resizeImage({
   height,
   newLocation
 }: resizeInput) {
-  const imageMeta = await sharp(imageLocation).metadata()
+  const imageMeta = await getImageMetaData(imageLocation)
   if (newLocation)
     return sharp(imageLocation)
       .resize(
@@ -41,6 +41,10 @@ export async function resizeImage({
   // then to file, as sharp cannot handle the input to be the same as output,
   // so we have to split them.
   return sharp(buffer).toFile(imageLocation)
+}
+
+export function getImageMetaData(imgLocation: string | Buffer) {
+  return sharp(imgLocation).metadata()
 }
 
 export default resizeImage

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import sharp from 'sharp'
-import { resizeImage } from '../../utils'
+import { getImageMetaData, resizeImage } from '../../utils'
 
 describe('test suite for image utils (uses sharp)', () => {
   // Taken from sharp docs: https://www.npmjs.com/package/sharp
@@ -27,6 +27,12 @@ describe('test suite for image utils (uses sharp)', () => {
         if (err) throw err
       })
     }
+  })
+
+  it('Should get Image metadata', async () => {
+    const Meta = await getImageMetaData(imgName)
+    expect(Meta.width).toBe(meta.width)
+    expect(Meta.height).toBe(meta.height)
   })
 
   it('Should Change width and height', async () => {
