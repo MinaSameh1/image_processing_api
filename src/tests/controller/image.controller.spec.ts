@@ -19,10 +19,16 @@ describe('Main Endpoint', () => {
   })
 
   it('Should return 200 on img request with width and height', async () => {
-    await request(app).get('/api/img?filename=img.jpg&h=100&w=200').expect(200)
+    await request(app)
+      .get('/api/img?filename=img.jpg&height=100&width=200')
+      .expect(200)
   })
 
   it('Should return 200 on img request with width only', async () => {
-    await request(app).get('/api/img?filename=img.jpg&w=200').expect(200)
+    await request(app).get('/api/img?filename=img.jpg&width=200').expect(200)
+  })
+
+  it('Should return 400 on img request with bad width', async () => {
+    await request(app).get('/api/img?filename=img.jpg&width=200f').expect(400)
   })
 })
