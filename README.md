@@ -27,10 +27,10 @@ npm run test
 To use the api, simply provide the image name (Image must be in `pictures` folder) in the filename query, Ex:
 
 ```
-http://localhost:8000/api/img?filename=fjord.jpg&w=500&h=200
+http://localhost:8000/api/img?filename=fjord.jpg&width=500&height=200
 ```
 
-You can omit the h/w, but filename must be provided.
+You can omit the height/width, but filename must be provided.
 
 ## API Endpoints
 
