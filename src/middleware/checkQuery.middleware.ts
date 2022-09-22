@@ -15,15 +15,21 @@ export function checkQuery(req: Request, res: Response, next: NextFunction) {
     })
   }
   if (req.query.filename) {
-    const height = Number(req.query.height)
-    const width = Number(req.query.width)
-    if (height && (isNaN(height) || height < 0 || height > 2000)) {
+    const height = req.query.height
+    const width = req.query.width
+    if (
+      height &&
+      (isNaN(Number(height)) || Number(height) < 0 || Number(height) > 2000)
+    ) {
       return res.status(400).json({
         message: 'Wrong input to height! Must be a number between 1 and 2000',
         error: true
       })
     }
-    if (width && (isNaN(width) || width < 0 || width > 2000)) {
+    if (
+      width &&
+      (isNaN(Number(width)) || Number(width) < 0 || Number(width) > 2000)
+    ) {
       return res.status(400).json({
         message: 'Wrong input to width! Must be a number between 1 and 2000',
         error: true
