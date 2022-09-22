@@ -14,7 +14,7 @@
     "format": "prettier --write 'src/**/*.ts'",
     "test": "cross-env LOG_LEVEL='silent' NODE_ENV='test' npm run build && jasmine",
     "prepare": "husky install",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged && npm run test"
   },
   "repository": {
     "type": "git",
