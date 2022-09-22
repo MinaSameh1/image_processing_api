@@ -37,7 +37,7 @@ You can omit the height/width, but filename must be provided.
 | Endpoint         | method | brief description                                                                          |
 | ---------------- | ------ | ------------------------------------------------------------------------------------------ |
 | /api/healthcheck | get    | Checks if api is working returns 200                                                       |
-| /api/img         | get    | Requires `filename` query, supports `h` and `w` for height and width respectfully in query |
+| /api/img         | get    | Requires `filename` query, supports `height` and `width` for height and width respectfully in query |
 
 ### Responses:
 
