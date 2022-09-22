@@ -4,7 +4,7 @@
   "description": "Project for udacity, serve images and modify them according to parameters.",
   "main": "src/index.ts",
   "scripts": {
-    "start": "node build/index.ts",
+    "start": "node dist/index.js",
     "build": "tsc",
     "build:watch": "tsc -w",
     "dev": "cross-env NODE_ENV='development' ts-node-dev --respawn ./src/index.ts",
