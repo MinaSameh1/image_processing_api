@@ -1,6 +1,6 @@
 # Image API
 
-This is a project for Udacity nano-degree fullstack project, sponsored by [EgyptFWD](https://egfwd.com/) the goal is to create an API to serve images and modify their size/other attributes.
+This is a project for Udacity nano-degree fullstack project, sponsored by [EgyptFWD](https://egfwd.com/) the goal is to create an API to serve images and modify their width and height.
 
 ## Instructions for running the API
 
